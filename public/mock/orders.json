@@ -1,0 +1,27 @@
+[
+  {
+    "id"         : 1,
+    "shop"       : "苹果1",
+    "ifCommented": true
+  },
+  {
+    "id"         : 2,
+    "shop"       : "苹果2",
+    "ifCommented": false
+  },
+  {
+    "id"         : 3,
+    "shop"       : "苹果3",
+    "ifCommented": true
+  },
+  {
+    "id"         : 4,
+    "shop"       : "苹果4",
+    "ifCommented": false
+  },
+  {
+    "id"         : 5,
+    "shop"       : "苹ss果4",
+    "ifCommented": false
+  }
+]
