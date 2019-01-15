@@ -32,12 +32,20 @@ export default class OrderList extends Component {
       </div>
     );
   }
-  handleSubmit = (id, comment, start) => {
-    this.state.data.map((item) => {
-      return item.id===id?
-      {
-        .. 
-      }
+  handleSubmit = (id, comment, stars) => {
+    // fetch("/saveComment").then(() => {});
+    const newData = this.state.data.map(item => {
+      return item.id === id
+        ? {
+            ...item,
+            comment,
+            stars,
+            ifCommented: true
+          }
+        : item;
+    });
+    this.setState({
+      data: newData
     });
   };
 }

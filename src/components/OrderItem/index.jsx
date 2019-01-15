@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import './style.css'
 
 export default class OrderItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       editing: false,
-      stars: 0,
-      comment: ""
+      stars: props.data.stars || 0,
+      comment: props.data.comment || ""
     };
   }
   render() {
@@ -65,19 +66,19 @@ export default class OrderItem extends Component {
       </div>
     );
   }
-  handleCommentChange = e => {
-    this.setState({
-      comment: e.traget.value
-    });
-  };
+
   renderStars() {
     const { stars } = this.state;
     return (
       <div>
         {[1, 2, 3, 4, 5].map((item, index) => {
-          const light = stars >= item ? "orderItem__star--light" : "";
+          const lightClass = stars >= item ? "orderItem__star--light" : "";
           return (
-            <span key={index} onClick={this.handleClickStars.bind(this, item)}>
+            <span
+              className={"orderItem__star" + lightClass}
+              key={index}
+              onClick={this.handleClickStars.bind(this, item)}
+            >
               ★
             </span>
           );
@@ -85,6 +86,11 @@ export default class OrderItem extends Component {
       </div>
     );
   }
+  handleCommentChange = e => {
+    this.setState({
+      comment: e.target.value
+    });
+  };
   handleClickStars = stars => {
     this.setState({
       stars
@@ -98,8 +104,8 @@ export default class OrderItem extends Component {
   handleCancelComment = () => {
     this.setState({
       editing: false,
-      comment: "",
-      stars: 0
+      stars: this.props.data.stars || 0,
+      comment: this.props.comment || ""
     });
   };
   handleSubmitComment = () => {
